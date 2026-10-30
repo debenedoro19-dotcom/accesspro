@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  /* Option A — Modern Warm Trust: charcoal, soft stone, warm amber */
+  --color-primary-50: #f7f7f6;
+  --color-primary-100: #e3e2df;
+  --color-primary-200: #c9c8c5;
+  --color-primary-300: #a8a6a1;
+  --color-primary-400: #85827c;
+  --color-primary-500: #6b6862;
+  --color-primary-600: #55524d;
+  --color-primary-700: #45423e;
+  --color-primary-800: #3a3835;
+  --color-primary-900: #2c2a28;
+  --color-primary-950: #1a1917;
+
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-200: #fde68a;
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+  --color-accent-700: #b45309;
+  --color-accent-800: #92400e;
+  --color-accent-900: #78350f;
+
+  --color-surface: #faf9f7;
+  --color-surface-elevated: #ffffff;
+  --color-ink: #1a1917;
+
+  --container-8xl: 88rem;
+  --shadow-card: 0 1px 3px rgb(26 25 23 / 0.04), 0 8px 24px -10px rgb(26 25 23 / 0.08);
+  --shadow-lift: 0 14px 36px -12px rgb(26 25 23 / 0.18);
+  --shadow-glow: 0 0 0 1px rgb(245 158 11 / 0.2), 0 8px 28px -8px rgb(245 158 11 / 0.25);
+
+  --font-display: var(--font-geist), "Inter", system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-mono-jb), ui-monospace, "SF Mono", monospace;
+
+  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+  --animate-scan: scan 2.6s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-pop-in: pop-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.75; transform: scale(1.04); }
+  }
+  @keyframes scan {
+    0%, 100% { top: 8%; }
+    50% { top: 88%; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+  }
+  @keyframes pop-in {
+    0% { opacity: 0; transform: scale(0.9) translateY(8px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-feature-settings: "cv02", "cv03", "cv11";
+}
+
+::selection {
+  background: var(--color-accent-200);
+  color: var(--color-primary-900);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f1efeb 25%, #e8e5df 50%, #f1efeb 75%);
+  background-size: 800px 100%;
+  animation: var(--animate-shimmer);
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 14px;
+  border-radius: 2px;
+  top: -20px;
+  animation: confetti-fall 2.8s ease-in forwards;
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(70vh) rotate(660deg); opacity: 0; }
+}
